@@ -1,45 +1,213 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strexerts</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-    }
-    header {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 80px;
-      padding: 0 40px;
-      background-color: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    nav a {
-      color: #111827;
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-left: 24px;
-    }
-    nav a:hover {
-      color: #2563eb;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slider Full Background Site</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { height: 100%; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+/* Slider container */
+.slider { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+
+/* Slides */
+.slides {
+  display: flex;
+  transition: transform 1s ease-in-out; /* slower slide */
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Project name */
+.slide h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: popUp 1.2s forwards; /* slower baseline animation */
+}
+
+@keyframes popUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 10;
+  color: #fff;
+}
+
+/* Logo */
+.logo img { height: 60px; }
+
+/* Navigation */
+nav { margin-left: 60px; }
+nav a {
+  margin: 0 16px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+nav a:hover { opacity: 0.7; }
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+.social-icons i {
+  margin-left: 16px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.social-icons i:hover { opacity: 0.7; }
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 5;
+  user-select: none;
+}
+.arrow.left { left: 20px; }
+.arrow.right { right: 20px; }
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 5;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: lightgray;
+  cursor: pointer;
+}
+.dot.active { background: black; }
+
+</style>
 </head>
 <body>
+
+<div class="slider">
   <header>
+    <div class="logo"><img src="images/logo.jpg" alt="Logo"></div>
+
     <nav>
       <a href="#">Home</a>
       <a href="#">About</a>
-      <a href="#">Blog</a>
+      <a href="#">Articles</a>
+      <a href="#">Contact us</a>
     </nav>
+
+    <div class="social-icons">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin-in"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
   </header>
+
+  <div class="slides">
+    <div class="slide"><img src="images/image1.jpg" alt="Project 1"><h2>Project 1</h2></div>
+    <div class="slide"><img src="images/image2.jpg" alt="Project 2"><h2>Project 2</h2></div>
+    <div class="slide"><img src="images/image3.jpg" alt="Project 3"><h2>Project 3</h2></div>
+    <div class="slide"><img src="images/image4.jpg" alt="Project 4"><h2>Project 4</h2></div>
+  </div>
+
+  <div class="arrow left">&#10094;</div>
+  <div class="arrow right">&#10095;</div>
+
+  <div class="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<script>
+const slides = document.querySelector('.slides');
+const slideElements = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = slideElements.length;
+let index = 0;
+
+function showSlide(i) {
+  if(i >= totalSlides) index = 0;
+  if(i < 0) index = totalSlides - 1;
+  slides.style.transition = 'transform 2s ease-in-out'; // slower slide
+  slides.style.transform = `translateX(${-index*100}%)`;
+
+  // Animate project name
+  slideElements.forEach(slide => slide.querySelector('h2').style.opacity = 0);
+  const currentH2 = slideElements[index].querySelector('h2');
+  currentH2.style.animation = 'none';
+  void currentH2.offsetWidth; // trigger reflow
+  currentH2.style.animation = 'popUp 5s forwards';
+  
+
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
+}
+
+document.querySelector('.arrow.right').addEventListener('click', () => { index++; showSlide(index); });
+document.querySelector('.arrow.left').addEventListener('click', () => { index--; showSlide(index); });
+dots.forEach((dot, idx) => { dot.addEventListener('click', () => { index = idx; showSlide(index); }); });
+
+showSlide(index);
+</script>
+
 </body>
 </html>
-
