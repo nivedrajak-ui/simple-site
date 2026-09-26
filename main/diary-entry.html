@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Runs before the page paints, so there's no flash of the wrong
+    // theme: if the visitor picked dark mode before, apply it immediately.
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    })();
+  </script>
+  <title>Title of the diary entry — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-title">Your Name</a>
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+
+        <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="diary.html" class="active">Site Diary</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="case-study.html">Case Study</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title + date for one entry -->
+  <header class="article-header">
+    <div class="wrap">
+      <h1>Title of the diary entry</h1>
+      <div class="entry-meta">
+        <time datetime="2026-09-20">20 September 2026</time>
+      </div>
+    </div>
+  </header>
+
+  <!-- The entry text itself. Write normal HTML here: <p>, <h2>,
+       <blockquote>, <img>, links — whatever the entry needs. -->
+  <article class="article-body">
+    <div class="wrap">
+      <p>First paragraph of the diary entry goes here.</p>
+      <p>Second paragraph. Add as many as you need.</p>
+
+      <blockquote>
+        <p>An example of a quoted line, styled with a left border.</p>
+      </blockquote>
+
+      <p>Closing paragraph.</p>
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap"><p>&copy; 2026 Your Name. &middot; <a href="diary.html">&larr; Back to Site Diary</a></p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

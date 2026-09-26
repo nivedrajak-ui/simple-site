@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Runs before the page paints, so there's no flash of the wrong
+    // theme: if the visitor picked dark mode before, apply it immediately.
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    })();
+  </script>
+  <title>Your Name — Home</title>
+  <meta name="description" content="Personal site, project journal and case studies." />
+
+  <!-- Two fonts: Fraunces for headings/display, Inter for body/UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER / NAV ============
+       Copy this whole <header> block, unchanged, onto every page.
+       Only change which <a> has class="active" to match the current page. -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-title">Your Name</a>
+
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+
+        <nav class="site-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="diary.html">Site Diary</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="case-study.html">Case Study</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============
+       Photo on the left, name + one-line tagline + interests on the right.
+       Stacks vertically under 30rem (~480px) wide screens. -->
+  <section class="hero">
+    <div class="wrap">
+      <img src="images/profile.jpg" alt="Your Name" class="hero-photo" />
+      <div>
+        <h1>Your Name</h1>
+        <p class="tagline">What you do, in one short sentence.</p>
+        <p class="interests">
+          <span>Interest one</span>
+          <span>Interest two</span>
+          <span>Interest three</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LATEST ============
+       A flat, dated list of your most recent items across the whole
+       site — diary entries, projects, case studies, all mixed together
+       and sorted newest first. Each <li> is one item: swap in real
+       links/dates/titles/excerpts, or delete/add <li> blocks freely. -->
+  <section class="latest">
+  <div class="wrap latest-layout">
+    <div class="latest-main">
+      <h2>Latest</h2>
+      <ul class="entry-list">
+        <li>
+          <div class="entry-meta">
+            <time datetime="2026-09-20">20 Sep 2026</time>
+            <span>Site Diary</span>
+          </div>
+          <h3><a href="diary-entry.html">Title of the diary entry</a></h3>
+          <p class="entry-excerpt">One or two sentences summarizing the entry, enough to make someone want to click through and read the rest.</p>
+        </li>
+
+        <li>
+          <div class="entry-meta">
+            <time datetime="2026-09-10">10 Sep 2026</time>
+            <span>Project</span>
+          </div>
+          <h3><a href="project-detail.html">Name of the project</a></h3>
+          <p class="entry-excerpt">Short description of what the project is and what it does.</p>
+        </li>
+
+        <li>
+          <div class="entry-meta">
+            <time datetime="2026-08-28">28 Aug 2026</time>
+            <span>Case Study</span>
+          </div>
+          <h3><a href="case-study-detail.html">Name of the case study</a></h3>
+          <p class="entry-excerpt">One line on the problem this case study walks through and what came out of it.</p>
+        </li>
+      </ul>
+    </div>
+
+    <aside class="latest-sidebar">
+      <div class="side-container">
+        <h2>First container</h2>
+        <p>Add content here.</p>
+      </div>
+
+      <div class="side-container">
+        <h2>Second container</h2>
+        <p>Add content here.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 Your Name.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

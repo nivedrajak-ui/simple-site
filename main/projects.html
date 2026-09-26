@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // Runs before the page paints, so there's no flash of the wrong
+    // theme: if the visitor picked dark mode before, apply it immediately.
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    })();
+  </script>
+  <title>Projects — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-title">Your Name</a>
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+
+        <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="diary.html">Site Diary</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="case-study.html">Case Study</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" style="padding-bottom:1.5rem;">
+    <div class="wrap">
+      <div>
+        <h1 style="font-size:1.5rem;">Projects</h1>
+        <p class="tagline">Things you have built, with links to code or live demos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="latest">
+    <div class="wrap">
+      <ul class="entry-list">
+
+        <li>
+          <div class="entry-meta">
+            <time datetime="2026-09-10">10 Sep 2026</time>
+            <span>Web app</span>
+          </div>
+          <h3><a href="project-detail.html">Name of the project</a></h3>
+          <p class="entry-excerpt">What the project is, what it does, and what you used to build it.</p>
+        </li>
+
+        <li>
+          <div class="entry-meta">
+            <time datetime="2026-07-02">02 Jul 2026</time>
+            <span>Tool</span>
+          </div>
+          <h3><a href="project-detail.html">An earlier project</a></h3>
+          <p class="entry-excerpt">Description of that project.</p>
+        </li>
+
+        <!-- Copy one <li> block per new project -->
+
+      </ul>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap"><p>&copy; 2026 Your Name.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
